@@ -1,3 +1,6 @@
+// i force my counter to be global.. it's on purpose! only god can judge me
+counter = 0;
+
 Array.from(document.querySelectorAll(".letter")).forEach(el => {
    el.innerText = randomLetter();
 });
@@ -18,9 +21,12 @@ let a = new FgGallery('.fg-gallery', {
     }
 })
 
-new FgSlider('slider-example', {
-    autoplay: true, // autoplay on / off
-    effect: 'slide', // fade, scale, slide, slide-top
-    duration: 1000, // duration till the next slide
-    bullets: true, // show / hide bullets
+document.getElementById("modeSelect").addEventListener("click", function(){
+    if (document.body.className === "darkMode"){
+        document.body.setAttribute("class", "lightMode");
+        console.log("flipping the switch!");
+    } else {
+        document.body.setAttribute("class", "darkMode");
+        console.log("backflip!");
+    }
 });
