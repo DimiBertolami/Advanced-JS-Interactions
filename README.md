@@ -9,7 +9,8 @@
 #### Nice-to-have features
 1. Chaser AND runner circle are functional
 1. Final letter challenge completed!
+=== 
 
-[x] A parallax carousel.
-[x] A collage with popup for more details.
-[x] Lightmode / Darkmode switch.
+- [x]  A parallax carousel.
+- [x]  A collage with popup for more details.
+- [x]  Lightmode / Darkmode switch.
