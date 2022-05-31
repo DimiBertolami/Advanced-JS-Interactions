@@ -146,10 +146,17 @@ function updateChaser(){
     console.log(`chaserbox left: ${chaserBox.left}`);
     console.log(`chaserbox top: ${chaserBox.top}`);
     if(insideChaserBox()){
-        chaser.x = mouse.x;
-        chaser.y = mouse.y+window.scrollY;
+        console.log(`scrollY: ${window.scrollY}`);
+        console.log(`X: ${chaser.x} or ${mouse.x}!`);
+        // chaser.div.style.left = mouse.x+'px'
+        // }
+        // if (mouse.x>130 || mouse.x<1300){
+        //     return;
+        // } else {
+            chaser.x = mouse.x+'px';
+            chaser.y = mouse.y+window.scrollY+'px';
+        // }
     }
-    console.log(`scrollY: ${window.scrollY}`);
 }
 function updateChaserBox(){
     chaserBox.left = chaserBoxDiv.getBoundingClientRect().left;
@@ -163,14 +170,14 @@ function insideChaserBox(){
     return true;
 }
 function displayChaser(){
-    chaser.div.style.top = mouse.y+chaser.scrollY+'px';
-    if (mouse.x>1600){
-        chaser.div.style.left = mouse.x+'px'
-    }
+    chaser.div.style.top = chaser.y+'px';
+    // if (mouse.x>1600){
+    //     chaser.div.style.left = mouse.x+'px'
+    // }
 
-    if (mouse.x>375){
-        chaser.div.style.left = mouse.x+375+'px'
-    }
+    // if (mouse.x>375){
+        chaser.div.style.left = chaser.x+'px'
+    // }
     // chaser.div.style.left = mouse.x+375+'px';
 }
 function game(){
