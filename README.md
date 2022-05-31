@@ -9,8 +9,12 @@
 #### Nice-to-have features
 1. Chaser AND runner circle are functional
 1. Final letter challenge completed!
-=== 
 
+---
+# DONE
 - [x]  A parallax carousel.
+***not my functions..*** 
+[original source](https://github.com/woody180/FG-Gallery)
+
 - [x]  A collage with popup for more details.
 - [x]  Lightmode / Darkmode switch.
