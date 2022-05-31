@@ -1,6 +1,7 @@
-// i force my counter to be global.. it's on purpose! only god can judge me
-counter = 0;
 
+// I force my counter to be global.. it's on purpose! only god can judge me
+counter = 0;
+// code was already here.. i'll use it later
 Array.from(document.querySelectorAll(".letter")).forEach(el => {
    el.innerText = randomLetter();
 });
@@ -10,7 +11,7 @@ function randomLetter(){
     return alphabet[Math.floor(Math.random() * alphabet.length)]
 }
 
-
+// gallery exercise 1 and 2
 let a = new FgGallery('.fg-gallery', {
     cols: 4,
     style: {
@@ -90,6 +91,8 @@ function Out()
 {
     document.getElementById("imgbox").style.visibility='hidden';
 }
+
+// exercise 3 get pokemon starts here
 async function getPokemon(q){
     // console.log(q.childNodes);
     // alert(q.childNodes[0].data);
@@ -101,6 +104,8 @@ async function getPokemon(q){
     return pokemon;
 }
 
+
+// darkmode exercise solved!
 document.getElementById("modeSelect").addEventListener("click", function(){
     if (document.body.className === "darkMode"){
         document.body.setAttribute("class", "lightMode");
@@ -113,29 +118,94 @@ document.getElementById("modeSelect").addEventListener("click", function(){
     }
 });
 
-let chaserBox = document.getElementById('chaserBox')
-chaserBox.addEventListener('DOMContentLoaded', () => {
-    let mousePosX = 0,
-        mousePosY = 0,
-        mouseCircle = document.getElementById('chaser');
+// red dot driving me nuts, but thanks to Tim's watch i understand things better
+const tic = 100;
+const mouse = {
+    x: 0,
+    y: 0
+}
+const chaserBoxDiv = document.getElementsByClassName('chaserBox')[0];
+const chaserBox = {
+    div: chaserBoxDiv,
+    left: chaserBoxDiv.getBoundingClientRect().left,
+    top: chaserBoxDiv.getBoundingClientRect().top,
+    right: chaserBoxDiv.getBoundingClientRect().right,
+    bottom: chaserBoxDiv.getBoundingClientRect().bottom,
+}
+const chaser = {
+    x: 0,
+    y: 0,
+    div: document.getElementsByClassName('chaser')[0],
+}
+document.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+})
+function updateChaser(){
+    updateChaserBox();
+    console.log(`chaserbox left: ${chaserBox.left}`);
+    console.log(`chaserbox top: ${chaserBox.top}`);
+    if(insideChaserBox()){
+        chaser.x = mouse.x;
+        chaser.y = mouse.y+window.scrollY;
+    }
+    console.log(`scrollY: ${window.scrollY}`);
+}
+function updateChaserBox(){
+    chaserBox.left = chaserBoxDiv.getBoundingClientRect().left;
+    chaserBox.right = chaserBoxDiv.getBoundingClientRect().right;
+    chaserBox.top = chaserBoxDiv.getBoundingClientRect().top;
+    chaserBox.bottom = chaserBoxDiv.getBoundingClientRect().bottom;
+    console.log(chaserBox);
+}
+function insideChaserBox(){
 
-    chaserBox.onmousemove = (e) => {
-        mousePosX = e.pageX;
-        mousePosY = e.pageY;
+    return true;
+}
+function displayChaser(){
+    chaser.div.style.top = mouse.y+chaser.scrollY+'px';
+    if (mouse.x>1600){
+        chaser.div.style.left = mouse.x+'px'
     }
 
-    let delay = 6,
-        revisedMousePosX = 0,
-        revisedMousePosY = 0;
-
-    function delayMouseFollow() {
-        requestAnimationFrame(delayMouseFollow);
-
-        revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
-        revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
-
-        mouseCircle.style.top = revisedMousePosY + 'px';
-        mouseCircle.style.left = revisedMousePosX + 'px';
+    if (mouse.x>375){
+        chaser.div.style.left = mouse.x+375+'px'
     }
-    delayMouseFollow();
-});
+    // chaser.div.style.left = mouse.x+375+'px';
+}
+function game(){
+    updateChaser();
+    displayChaser();
+    setTimeout(game, tic)
+}
+game();
+// document.addEventListener('DOMContentLoaded', () => {
+//     let mousePosX = 0,
+//         mousePosY = 0,
+//         mouseCircle = document.getElementById('chaser');
+//
+//     document.onmousemove = (e) => {
+//         mousePosX = e.pageX;
+//         // mousePosX = e.offsetX;
+//         mousePosY = e.pageY;
+//         // mousePosY = e.offsetY;
+//     }
+//
+//     let delay = 6,
+//         revisedMousePosX = 0,
+//         revisedMousePosY = 0;
+//
+//     function delayMouseFollow() {
+//         requestAnimationFrame(delayMouseFollow);
+//
+//         revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
+//         revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
+//
+//         mouseCircle.style.top = revisedMousePosY + 'px';
+//         mouseCircle.style.left = revisedMousePosX + 'px';
+//     }
+//     delayMouseFollow();
+// });
+
+
+
