@@ -69,20 +69,26 @@
                     class="poke" onmouseover="getPokemon(this)">farfetchd</span> itself is based on a specific manner for preparing a meal of duck,
             with its rarity in the wild being a result of overhunting.
         </div>
-        <div id="imgbox">
-            <img id='pokeImage' src='images/Sample.jpg' onmouseover="Large(this)" />
-        </div>
+<!--        <div id="imgbox">-->
+<!--            <img id='pokeImage' src='images/Sample.jpg' onmouseover="Large(this)" />-->
+<!--        </div>-->
     </div>
     <div class="row game">
         <div class="col-12 title">See this red circle in the box? I want you to make this a chasing circle, it will run
             after your cursor as long as it is in the box!
         </div>
-        <div class="col-12 box">
-            <div class="chaser"></div>
+        <br>
+        <label for="chaserSpeed" hidden></label><input type="text" id="chaserSpeed" name="variable_velocity_box" value="100" hidden><br>
+
+        <div class="col-12 box" id="chaserBox">
+            <div class="chaser" id="chaser"></div>
         </div>
         <div class="col-12 title">See this green circle in the box? I want you to make this a running circle, it will
             run away from your cursor as long as it is in the box!
         </div>
+        <br>
+        <label for="runnerSpeed" hidden></label><input type="text" id="runnerSpeed" name="variable_velocity_box2" value="100" hidden><br>
+
         <div class="col-12 box">
             <div class="runner"></div>
         </div>

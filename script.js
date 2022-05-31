@@ -101,8 +101,6 @@ async function getPokemon(q){
     return pokemon;
 }
 
-
-
 document.getElementById("modeSelect").addEventListener("click", function(){
     if (document.body.className === "darkMode"){
         document.body.setAttribute("class", "lightMode");
@@ -113,4 +111,31 @@ document.getElementById("modeSelect").addEventListener("click", function(){
         document.title = "darkMode!"
         console.log("backflip!");
     }
+});
+
+let chaserBox = document.getElementById('chaserBox')
+chaserBox.addEventListener('DOMContentLoaded', () => {
+    let mousePosX = 0,
+        mousePosY = 0,
+        mouseCircle = document.getElementById('chaser');
+
+    chaserBox.onmousemove = (e) => {
+        mousePosX = e.pageX;
+        mousePosY = e.pageY;
+    }
+
+    let delay = 6,
+        revisedMousePosX = 0,
+        revisedMousePosY = 0;
+
+    function delayMouseFollow() {
+        requestAnimationFrame(delayMouseFollow);
+
+        revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
+        revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
+
+        mouseCircle.style.top = revisedMousePosY + 'px';
+        mouseCircle.style.left = revisedMousePosX + 'px';
+    }
+    delayMouseFollow();
 });
